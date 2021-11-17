@@ -16,4 +16,4 @@ class Example : public tll::channel::Base<Example>
 
 TLL_DEFINE_IMPL(Example);
 
-auto channel_module = tll::make_channel_module<Example>();
+TLL_DEFINE_MODULE(Example);
