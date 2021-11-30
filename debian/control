@@ -1,0 +1,18 @@
+Source: tll-example
+Section: devel
+Priority: optional
+Maintainer: Pavel Shramov <shramov@mexmat.net>
+Build-Depends: debhelper (>= 11), meson (>= 0.53), cmake, pkg-config,
+    libfmt-dev, libtll-dev,
+    python3-distutils, python3-pytest, python3-tll
+Standards-Version: 4.5.0
+Vcs-Git: https://github.com/shramov/tll-example
+
+Package: libtll-example
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: TLL channel example
+ .
+ Package containes example TLL channel
