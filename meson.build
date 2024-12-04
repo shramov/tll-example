@@ -1,19 +1,22 @@
-project('tll-example', 'cpp', version: '0.0.0', default_options: ['cpp_std=c++17', 'werror=true', 'optimization=2'])
+project('tll-example', 'cpp'
+	, version: '0.0.0'
+	, license: 'MIT'
+	, default_options: ['cpp_std=c++2a', 'werror=true', 'optimization=2']
+)
 
 include = [include_directories('src')]
 
-tll = dependency('tll')
 fmt = dependency('fmt')
+tll = dependency('tll')
 
-lib = shared_library('tll-example',
-	['src/channel.cc'],
-	include_directories : include,
-	dependencies : [fmt, tll],
-	install : true,
+shared_library('tll-example'
+	, ['src/module.cc']
+	, include_directories : include
+	, dependencies : [fmt, tll]
 )
 
-test('pytest', import('python').find_installation('python3')
-	, args: ['-m', 'pytest', '-v', '--log-level=DEBUG', 'tests/']
+test('pytest', import('python').find_installation('python3', disabler: true)
+	, args: ['-m', 'pytest', '-v', 'tests']
 	, env: 'BUILD_DIR=@0@'.format(meson.current_build_dir())
 	, workdir: meson.current_source_dir()
 )
