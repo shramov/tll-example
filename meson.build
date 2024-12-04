@@ -10,7 +10,7 @@ fmt = dependency('fmt')
 tll = dependency('tll')
 
 shared_library('tll-example'
-	, ['src/module.cc']
+	, ['src/module.cc', 'src/logic.cc']
 	, include_directories : include
 	, dependencies : [fmt, tll]
 )
