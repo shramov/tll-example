@@ -8,12 +8,15 @@ include = [include_directories('src')]
 
 fmt = dependency('fmt')
 tll = dependency('tll')
+gtkmm = dependency('gtkmm-3.0', required: false, disabler: true)
 
 shared_library('tll-example'
 	, ['src/module.cc', 'src/logic.cc']
 	, include_directories : include
 	, dependencies : [fmt, tll]
 )
+
+executable('gtk-example', ['src/gtk.cc'], dependencies : [gtkmm, fmt, tll])
 
 test('pytest', import('python').find_installation('python3', disabler: true)
 	, args: ['-m', 'pytest', '-v', 'tests']
