@@ -1,0 +1,11 @@
+- options:
+    cpp-namespace: binder_test
+- name: KV
+  fields:
+    - {name: key, type: string}
+    - {name: value, type: string}
+
+- name: Message
+  id: 10
+  fields:
+    - {name: list, type: '*KV'}

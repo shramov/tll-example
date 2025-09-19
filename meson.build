@@ -18,6 +18,10 @@ shared_library('tll-example'
 
 executable('gtk-example', ['src/gtk.cc'], dependencies : [gtkmm, fmt, tll])
 
+subdir('scheme') # scheme_headers defined here
+
+executable('binder', ['src/binder.cc'] + scheme_headers, dependencies : [fmt, tll])
+
 test('pytest', import('python').find_installation('python3', disabler: true)
 	, args: ['-m', 'pytest', '-v', 'tests']
 	, env: 'BUILD_DIR=@0@'.format(meson.current_build_dir())
